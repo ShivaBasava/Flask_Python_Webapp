@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+
+  <h1 class="my-4" align= center>Flask CRUD App</h1>
+  {% if ToDo_list|length < 1 %}
+  <p>There is nothing to list for now.</p>
+  {% else %}
+  <table class="table center table-hover" border>
+    <thead>
+      <tr class= "active">
+        <th>To_Do Title</th>
+        <th>Started</th>
+        <th>Target</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for todo in ToDo_list %}
+      <tr class="success">
+        <td><a href="/update/{{ todo.id }}">{{ todo.name }}</a></td>
+        <td>{{ todo.created_at.date() }}</td>
+		<td>{{ todo.target_at }}</td>
+    
+        <td class="text-left">
+			<a class="btn btn-danger btn-sm" href="/delete/{{ todo.id }}" role="button">Completed</a>
+		</td>		
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% endif %}
+	<p>Add New ToDo:</p>
+  {% include 'snippets/form.html' %}
+	<p>[
+	<u>Note:</u><li>To Update / Change  a ToDo details, Click on the respective ToDo title.</li>
+		<li>Image Source :- Internet</li>
+	]</p>
+</div>
+{% endblock content %}

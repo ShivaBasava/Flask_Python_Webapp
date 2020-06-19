@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+  <h1 class="my-4">Update ToDo <u>#{{ ToDo.id }}</u> Details</h1> 
+  <button> <a href="/">Back</a> </button>
+  <form action="/update/{{ ToDo.id }}" method="POST">
+    <div class="form-row">
+      <div class="col-sm-6 my-4">
+        <input type="text" class="form-control" name="name" value="{{ ToDo.name }}" required maxlength = "80">
+        <input type="text" class="form-control" name="name2" value="{{ ToDo.target_at }}" required maxlength = "10" 
+		placeholder="update Target date in YYYY-MM-DD format">
+      </div>
+      <div class="col-sm-2 my-4">
+        <button type="submit" class="btn btn-primary btn-block">Update</button>		
+	  </div>
+    </div>
+  </form>
+</div>
+{% endblock content %}
